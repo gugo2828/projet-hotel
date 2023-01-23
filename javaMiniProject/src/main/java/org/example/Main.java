@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.util.Date;
 import java.util.*;
 
+
 /*
 ****** Mini projet Hôtel ******
 Ce projet a pour but de prendre en main les concepts de la programmation orienté objet Java par le
@@ -199,7 +200,7 @@ public class Main {
                         System.out.println("Dans D-4.Afficher le numero de la premiere chambre vide");
                         System.out.println("Taper 1 pour afficher ou 0 pour menu principale");
                         choice = scanner.nextInt();
-                        for (int i=0;i<hotel.size()-1;i++){
+                        for (int i=0;i<hotel.size();i++){
                             Chambre ch=hotel.get(i);
 
                             if (ch.isEtat()==false){
@@ -220,6 +221,13 @@ public class Main {
                         System.out.println("Dans E-5.Afficher le numero la derniere chambre vide");
                         System.out.println("Taper 1 pour afficher ou 0 pour menu principale");
                         choice = scanner.nextInt();
+                        for (int i=0;i<hotel.size()-1;i++){
+                            Chambre ch=hotel.get(hotel.size()-1);
+                            if (ch.isEtat()==false){
+                                System.out.println(ch.toString());
+                                break;
+                            }
+                        }
                         break;
                     }
                     else {
