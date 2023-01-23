@@ -1,6 +1,6 @@
 package org.example;
 
-public class Groupe extends Client{
+public class Groupe extends Client {
     public Groupe(int id, String nom, String prenom, String adresse) {
         super(id, nom, prenom, adresse);
     }
@@ -12,7 +12,7 @@ public class Groupe extends Client{
                 ", idReservation=" + this.idReservation +
                 ", nom='" + this.nom + '\'' +
                 ", prenom='" + this.prenom + '\'' +
-                ", adresse='" + this.adresse + '\'' +"\n"+
+                ", adresse='" + this.adresse + '\'' + "\n" +
                 '}';
     }
 }

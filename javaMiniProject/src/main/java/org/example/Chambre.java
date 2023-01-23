@@ -2,16 +2,14 @@ package org.example;
 
 public class Chambre {
     int id = 0;
-    int idreservation =0;
+    int idreservation = 0;
 
-    int num =0;
+    int num = 0;
     //si la chambre est false,il est vide
     boolean etat = false;
 
     public Chambre(int id, int num, boolean etat) {
         this.id = id;
-
-
         this.num = num;
         this.etat = etat;
     }
@@ -63,7 +61,7 @@ public class Chambre {
                 "id=" + this.id +
                 ", idreservation=" + this.idreservation +
                 ", num=" + this.num +
-                ", etat=" + this.etat +"\n"+
+                ", etat=" + this.etat + "\n" +
                 '}';
     }
 }

@@ -13,18 +13,19 @@ public class Reservation {
 
     public Reservation(int id) {
 
-        this.id=id;
+        this.id = id;
     }
-    public void addCambreToReservation(Chambre chambre,Client client,Date datestart,Date dateend) {
+
+    public void addCambreToReservation(Chambre chambre, Client client, Date datestart, Date dateend) {
 
         chambre.setEtat(true);
         chambre.setIdreservation(this.id);
-        this.datestart=datestart;
-        this.dateend=dateend;
+        this.datestart = datestart;
+        this.dateend = dateend;
         client.setIdReservation(this.id);
     }
 
-    public void removeCambreFromReservation(Chambre chambre,Client client) {
+    public void removeCambreFromReservation(Chambre chambre, Client client) {
         chambre.setEtat(false);
         chambre.setIdreservation(0);
         client.setIdReservation(0);
@@ -53,12 +54,13 @@ public class Reservation {
     public void setDateend(Date dateend) {
         this.dateend = dateend;
     }
+
     @Override
     public String toString() {
         return "Reservation{" +
                 "id=" + this.id +
                 ", datestart=" + datestart +
-                ", dateend=" + dateend +"\n"+
+                ", dateend=" + dateend + "\n" +
                 '}';
     }
 }

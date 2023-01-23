@@ -122,7 +122,6 @@ public class Main {
         System.out.println(Allreservation.toString());
 
 
-
         Scanner scanner = new Scanner(System.in);
         int choice =0;
 

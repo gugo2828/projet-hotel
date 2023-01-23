@@ -1,7 +1,6 @@
 package org.example;
 
-public class ChambreTwin extends Chambre{
-
+public class ChambreTwin extends Chambre {
 
     public ChambreTwin(int id, int num, boolean etat) {
         super(id, num, etat);
@@ -13,7 +12,7 @@ public class ChambreTwin extends Chambre{
                 "id=" + this.id +
                 ", idreservation=" + this.idreservation +
                 ", num=" + this.num +
-                ", etat=" + this.etat +"\n"+
+                ", etat=" + this.etat + "\n" +
                 '}';
     }
 }
