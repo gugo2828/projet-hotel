@@ -1,6 +1,9 @@
 package org.example;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.*;
 
@@ -87,41 +90,8 @@ public class Main {
         hoteldatabase.add(personne2);
         hoteldatabase.add(personne3);
 
-        //remove chambre de reservation
-        //r12.removeCambreFromReservation(ch2,personne2);
-
-
-
-
-        //creation reservation sans numero + ajout chambre a reservation
-        Reservation r10 = new Reservation(10);
-        Reservation r11 = new Reservation(11);
-        Reservation r12 = new Reservation(12);
-
-
-
-        r11.addCambreToReservation(ch2,personne2,new Date(2022,12,1),new Date(2022,12,10));
-        r12.addCambreToReservation(ch2,personne2,new Date(2022,12,11),new Date(2022,12,15));
-        r10.addCambreToReservation(ch1,personne1,new Date(2022,12,1),new Date(2022,12,5));
-
-
 
         ArrayList <Reservation> Allreservation = new ArrayList<>();
-
-        for (int i=0;i<Allreservation.size();i++){
-
-
-            if (Allreservation.get(i).getDateend().compareTo(r10.getDatestart())>0){//nbre de jours entre les deux dates
-                Allreservation.add(r10);
-
-            }
-        }
-
-        Allreservation.add(r11);
-        Allreservation.add(r12);
-
-        System.out.println(Allreservation.toString());
-
 
         Scanner scanner = new Scanner(System.in);
         int choice =0;
@@ -255,8 +225,90 @@ public class Main {
                             if (Objects.equals(login, username) && Objects.equals(motDePass, pass)) {
                                 compteur = -1;
                                 System.out.println("Login ok");
-                                System.out.println("What to do next 1/2/3");
+                                System.out.println("Merci de preciser le type de chambre 1-Single,2-Twin,3-Double,4-Suite");
                                 choice = scanner.nextInt();
+
+                                Chambre chselct=null;
+                                switch(choice){
+
+                                    case 1:
+                                        for (int i=0;i<hotel.size();i++){
+                                            Chambre ch=hotel.get(i);
+                                            if (ch.isEtat()==false && ch instanceof ChambreSingle  ) {
+                                                System.out.println("Single " +ch.toString());
+                                                chselct=ch;
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    case 2:
+                                        for (int i=0;i<hotel.size();i++){
+                                            Chambre ch=hotel.get(i);
+                                            if (ch.isEtat()==false && ch instanceof ChambreTwin  ) {
+                                                System.out.println("Twin " +ch.toString());
+                                                chselct=ch;
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    case 3:
+                                        for (int i=0;i<hotel.size();i++){
+                                            Chambre ch=hotel.get(i);
+                                            if (ch.isEtat()==false && ch instanceof ChambreDouble  ) {
+                                                System.out.println("Double " +ch.toString());
+                                                chselct=ch;
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    case 4:
+                                        for (int i=0;i<hotel.size();i++){
+                                            Chambre ch=hotel.get(i);
+                                            if (ch.isEtat()==false && ch instanceof ChambreSuite  ) {
+                                                System.out.println("Suite " +ch.toString());
+                                                chselct=ch;
+                                                break;
+                                            }
+                                        }
+                                        break;
+                                    default:
+                                        System.out.println("Choix incorrect");
+                                        break;
+                                }
+                                System.out.println(hoteldatabase.toString());
+                                System.out.println("Merci de preciser le 'id' de client a partir de la liste");
+                                int psselct = scanner.nextInt();
+
+                                System.out.println("Merci de preciser le date de arrive au format yyyy,month,day");
+                                String dateStart = scanner.next();
+                                System.out.println("Merci de preciser le date de sortie au format yyyy,month,day");
+                                String dateEnd = scanner.next();
+
+                                System.out.println("**********************************");
+                                System.out.println("id du chambre--"+chselct.getId());
+                                System.out.println("id du persone--"+psselct);
+                                System.out.println("dateStart--"+dateStart.toString());
+                                System.out.println("dateEnd--"+dateEnd.toString());
+                                System.out.println("**********************************");
+
+
+                                Reservation r = new Reservation();
+
+                                LocalDate timeStart = LocalDate.parse(dateStart);
+                                LocalDate timeEnd = LocalDate.parse(dateEnd);
+
+                                r.addCambreToReservation(chselct,hoteldatabase.get(psselct),timeStart,timeEnd);
+                                //must have implementation of check for date
+                                /* for (int i=0;i<Allreservation.size();i++){
+                                   if (Allreservation.get(i).getDateend().compareTo(r10.getDatestart())>0){//nbre de jours entre les deux dates
+                                  Allreservation.add(r10);
+                                   }
+                                   }*/
+                                Allreservation.add(r);
+                                System.out.println("Check reservation");
+                                System.out.println(Allreservation.toString());
+                                break;
+
                             }
                             else {
                                 System.out.println("Verifier votre login et mot de passe");
@@ -291,8 +343,12 @@ public class Main {
                             if (Objects.equals(login, username) && Objects.equals(motDePass, pass)) {
                                 compteur = -1;
                                 System.out.println("Login ok");
-                                System.out.println("What to do next 1/2/3");
-                                choice = scanner.nextInt();
+                                System.out.println("Merci de selectioner le numero de reservation a supprimer");
+                                int resselector = scanner.nextInt();
+
+                                //same as for reservation
+                               // r.removeCambreFromReservation(chselect,pselect);
+                                System.out.println("La reservation est supprimé");
                             } else {
                                 System.out.println("Verifier votre login et mot de passe");
                                 compteur = compteur - 1;

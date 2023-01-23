@@ -1,28 +1,31 @@
 package org.example;
 
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
 
 public class Reservation {
 
+    private static int compteur=1;
     int id;
-    public Date datestart;
-    public Date dateend;
+    public LocalDate datestart;
+    public LocalDate dateend;
 
-    public Reservation(int id) {
+    public Reservation() {
 
-        this.id = id;
+
     }
 
-    public void addCambreToReservation(Chambre chambre, Client client, Date datestart, Date dateend) {
-
+    public void addCambreToReservation(Chambre chambre, Client client, LocalDate datestart, LocalDate dateend) {
+        this.id=compteur;
         chambre.setEtat(true);
-        chambre.setIdreservation(this.id);
+        chambre.setIdreservation(compteur);
         this.datestart = datestart;
         this.dateend = dateend;
         client.setIdReservation(this.id);
+        compteur+=1;
     }
 
     public void removeCambreFromReservation(Chambre chambre, Client client) {
@@ -37,21 +40,21 @@ public class Reservation {
     }
 
 
-    public Date getDatestart() {
+    public LocalDate getDatestart() {
         return this.datestart;
     }
 
 
-    public void setDatestart(Date datestart) {
+    public void setDatestart(LocalDate datestart) {
         this.datestart = datestart;
     }
 
-    public Date getDateend() {
+    public LocalDate getDateend() {
         return this.dateend;
     }
 
 
-    public void setDateend(Date dateend) {
+    public void setDateend(LocalDate dateend) {
         this.dateend = dateend;
     }
 
