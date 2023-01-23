@@ -156,7 +156,6 @@ public class Main {
                     if (choice == 2) {
                         System.out.println("Dans B-2.Afficher le nombre de chambres reservees");
                         System.out.println("Taper 1 pour afficher ou 0 pour menu principale");
-                        choice=-1;//for reset
                         choice = scanner.nextInt();
                         int sum=0;
                         for (int i=0;i<hotel.size();i++){
@@ -174,9 +173,7 @@ public class Main {
                 }
             } else if (choice == 3) {
                 while (choice > 0 && choice < 10) {
-
                     if (choice == 3) {
-
                         System.out.println("Dans C-3.Afficher le nombre de chambres libres");
                         System.out.println("Taper 1 pour afficher ou 0 pour menu principale");
                         choice = scanner.nextInt();
@@ -202,15 +199,14 @@ public class Main {
                         System.out.println("Dans D-4.Afficher le numero de la premiere chambre vide");
                         System.out.println("Taper 1 pour afficher ou 0 pour menu principale");
                         choice = scanner.nextInt();
-                        int numpremchambreLibre=0;
-                        for (int i=0;i<hotel.size();i++){
-
+                        for (int i=0;i<hotel.size()-1;i++){
                             Chambre ch=hotel.get(i);
-                            if (ch.getIdreservation()==0){
-                                numpremchambreLibre=ch.getNum();
+
+                            if (ch.isEtat()==false){
+                                System.out.println(ch.toString());
+                                break;
                             }
                         }
-                        System.out.println("Numero de la premier chambre libre est "+numpremchambreLibre);
                         break;
                     } else {
                         System.out.println("Verifier votre chiffre 1");
