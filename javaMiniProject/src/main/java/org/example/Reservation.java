@@ -1,6 +1,7 @@
 package org.example;
 
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
@@ -10,15 +11,15 @@ public class Reservation {
 
     private static int compteur=1;
     int id;
-    public LocalDate datestart;
-    public LocalDate dateend;
+    public Date datestart;
+    public Date dateend;
 
     public Reservation() {
 
 
     }
 
-    public void addCambreToReservation(Chambre chambre, Client client, LocalDate datestart, LocalDate dateend) {
+    public void addCambreToReservation(Chambre chambre, Client client, Date datestart, Date dateend) {
         this.id=compteur;
         chambre.setEtat(true);
         chambre.setIdreservation(compteur);
@@ -40,21 +41,21 @@ public class Reservation {
     }
 
 
-    public LocalDate getDatestart() {
+    public Date getDatestart() {
         return this.datestart;
     }
 
 
-    public void setDatestart(LocalDate datestart) {
+    public void setDatestart(Date datestart) {
         this.datestart = datestart;
     }
 
-    public LocalDate getDateend() {
+    public Date getDateend() {
         return this.dateend;
     }
 
 
-    public void setDateend(LocalDate dateend) {
+    public void setDateend(Date dateend) {
         this.dateend = dateend;
     }
 

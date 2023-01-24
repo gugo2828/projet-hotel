@@ -1,5 +1,6 @@
 package org.example;
 
+import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -280,32 +281,37 @@ public class Main {
                                 int psselct = scanner.nextInt();
 
                                 System.out.println("Merci de preciser le date de arrive au format yyyy,month,day");
-                                String dateStart = scanner.next();
+                                SimpleDateFormat sdf = new SimpleDateFormat("yyyy,MM,dd");
+                                Date timeStart = sdf.parse(scanner.next());
                                 System.out.println("Merci de preciser le date de sortie au format yyyy,month,day");
-                                String dateEnd = scanner.next();
+                                Date timeEnd = sdf.parse(scanner.next());
 
                                 System.out.println("**********************************");
                                 System.out.println("id du chambre--"+chselct.getId());
                                 System.out.println("id du persone--"+psselct);
-                                System.out.println("dateStart--"+dateStart.toString());
-                                System.out.println("dateEnd--"+dateEnd.toString());
+                                System.out.println("dateStart--"+timeStart.toString());
+                                System.out.println("dateEnd--"+timeEnd.toString());
                                 System.out.println("**********************************");
 
 
                                 Reservation r = new Reservation();
 
-                                LocalDate timeStart = LocalDate.parse(dateStart);
-                                LocalDate timeEnd = LocalDate.parse(dateEnd);
-
-                                r.addCambreToReservation(chselct,hoteldatabase.get(psselct),timeStart,timeEnd);
+                                r.addCambreToReservation(chselct,hoteldatabase.get(psselct-1),timeStart,timeEnd);
                                 //must have implementation of check for date
-                                /* for (int i=0;i<Allreservation.size();i++){
-                                   if (Allreservation.get(i).getDateend().compareTo(r10.getDatestart())>0){//nbre de jours entre les deux dates
-                                  Allreservation.add(r10);
+                                 for (int i=0;i<Allreservation.size();i++){
+                                     Date j = Allreservation.get(i).getDateend();
+                                   if (j.before(timeStart)){//nbre de jours entre les deux dates
+
+                                      }
                                    }
-                                   }*/
                                 Allreservation.add(r);
-                                System.out.println("Check reservation");
+
+
+                                System.out.println("****************** Les chambres *****************");
+                                System.out.println(hotel.toString());
+                                System.out.println("****************** Les clients ******************");
+                                System.out.println(hoteldatabase.toString());
+                                System.out.println("****************** Les reservations ******************");
                                 System.out.println(Allreservation.toString());
                                 break;
 
